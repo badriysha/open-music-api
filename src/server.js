@@ -2,16 +2,18 @@ require('dotenv').config();
 
 const Hapi = require('@hapi/hapi');
 const songs = require('./api/songs');
-const SongsServices = require('./services/postgres/SongsServices');
+const SongsService = require('./services/postgres/SongsService');
 const SongsValidator = require('./validator/songs');
 
 const init = async () => {
-    const songsService = new SongsServices();
+    const songsService = new SongsService();
     const server = Hapi.server({
-       port: process.env.PORT,
+        port: process.env.PORT,
         host: process.env.HOST,
         routes: {
-           origin: ['*'],
+            cors: {
+                origin: ['*'],
+            },
         },
     });
 
@@ -24,7 +26,7 @@ const init = async () => {
     });
 
     await server.start();
-    console.log(`server berjalan pada ${server.info.uri}`);
+    console.log(`Server berjalan pada ${server.info.uri}`);
 };
 
 init();
