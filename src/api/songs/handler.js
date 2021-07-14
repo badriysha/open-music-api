@@ -13,7 +13,7 @@ class SongsHandler {
         this.deleteSongByIdHandler = this.deleteSongByIdHandler.bind(this);
     }
 
-    async postSongHandler (request, h) {
+    async postSongHandler(request, h) {
         try {
             this._validator.validateSongPayload(request.payload);
             const { title, year, performer, genre, duration } = request.payload;
@@ -44,7 +44,7 @@ class SongsHandler {
                 message: 'Maaf, terjadi kesalahan pada server kami.',
             });
             response.code(500);
-            console.error(e);
+            console.error(error);
             return response;
         }
     }
@@ -55,8 +55,8 @@ class SongsHandler {
             status: 'success',
             data: {
                 songs,
-            }
-        }
+            },
+        };
     }
 
     async getSongByIdHandler(request, h) {
@@ -81,7 +81,7 @@ class SongsHandler {
             // If Server Error
             const response = h.response({
                 status: 'error',
-                message: 'Maaf, terjadi kesalahan pada server kami.'
+                message: 'Maaf, terjadi kesalahan pada server kami.',
             });
             response.code(500);
             console.error(error);
@@ -99,7 +99,7 @@ class SongsHandler {
             return {
                 status: 'success',
                 message: 'lagu berhasil diperbarui',
-            }
+            };
         } catch (error) {
             if (error instanceof ClientError) {
                 const response = h.response({
@@ -112,7 +112,7 @@ class SongsHandler {
             // If Server Error
             const response = h.response({
                 status: 'error',
-                message: 'Maaf, terjadi kesalahan pada server kami.'
+                message: 'Maaf, terjadi kesalahan pada server kami.',
             });
             response.code(500);
             console.error(error);
@@ -127,7 +127,7 @@ class SongsHandler {
             return {
                 status: 'success',
                 message: 'lagu berhasil dihapus',
-            }
+            };
         } catch (error) {
             if (error instanceof ClientError) {
                 const response = h.response({
@@ -140,7 +140,7 @@ class SongsHandler {
             // If Server Error
             const response = h.response({
                 status: 'error',
-                message: 'Maaf, terjadi kesalahan pada server kami.'
+                message: 'Maaf, terjadi kesalahan pada server kami.',
             });
             response.code(500);
             console.error(error);
