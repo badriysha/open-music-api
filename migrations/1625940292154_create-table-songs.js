@@ -13,7 +13,7 @@ exports.up = pgm => {
             notNull: true,
         },
         year: {
-           type: 'TEXT',
+           type: 'INTEGER',
             notNull: true,
         },
         performer: {
@@ -28,11 +28,11 @@ exports.up = pgm => {
            type: 'INTEGER',
             notNull: false,
         },
-        updated_at: {
+        inserted_at: {
            type: 'TEXT',
             notNull: true,
         },
-        created_at: {
+        updated_at: {
            type: 'TEXT',
             notNull: true,
         },
